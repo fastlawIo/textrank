@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+        <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            function markup() {
+                var treshold = parseInt($("#threshold").val());
+                if (treshold == undefined) return;
+                $.find("#results_block span").forEach(function(e) {
+                    e.classList.remove("selected")
+                    e.classList.remove("unselected")
+                    var r = parseInt(e.dataset.val)
+                    if (r < treshold) {
+                        e.classList.add("selected")                    
+                    } else {
+                        e.classList.add("unselected")                    
+                    }
+                });
+            }
+
+            $(document).ready(function() {
+               markup();
+               $('#threshold').change(markup);
+            });
+        </script>
+    </head>
+    <body>
+        <form action="/summorize"  method="post">
+            <h1>TextRank demo</h1>
+            <div class="texts">
+                <textarea name="text">
+                    {{text}}
+                </textarea>
+                <div class="results">
+                    <div id="results_block">
+                        {{html}}
+                    </div>
+                    <div class="threshold">
+                        <label for="threshold">threshold</label>
+                        <input type="range" id="threshold"
+                            name="threshold" min="0" max="100" />
+                    </div>
+                </div>
+            </div>
+            <input class="button" type="submit" value="Summarize"/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+.texts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.texts textarea {
+    padding: 20px;
+    width: 800px;
+    height: 600px;
+}
+
+.texts .results {
+    padding: 20px;
+    width: 800px;
+    height: 600px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1 {
+    text-align: center;
+}
+
+.threshold {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 400px;
+}
+
+.button {
+    margin-top: 20px;
+    width: 140px;
+}
+
+.selected {
+    font-weight: bold;
+}
+
+.unselected {
+    color: gainsboro;
+}
